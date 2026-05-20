@@ -1,18 +1,92 @@
 [
   {
-    "id": "clamshell",
-    "name": "Clamshell",
-    "targetMuscles": ["Gluteus Medius", "Hip External Rotators"],
+    "id": "hueftabduktion-im-stehen",
+    "name": "Hüftabduktion im Stehen",
+    "targetMuscles": ["Gluteus Medius", "Gluteus Maximus", "Hüftabduktoren"],
     "instructions": [
-      "Lie on your side with your hips and knees bent at 45 degrees.",
-      "Keep your feet stacked together and your core engaged.",
-      "Rotate your top knee upward as far as you can without moving your pelvis.",
-      "Hold briefly at the top, then slowly lower back down."
+      "Starten Sie mit geschlossenen Füßen und stützen Sie die Hände seitlich am Rumpf ab. Falls benötigt, können Sie sich an einer Stuhllehne festhalten.",
+      "Spannen Sie die Gesäßmuskulatur an und heben Sie ein Bein vom Boden ab. Das Knie sollte dabei in einem 45°-Winkel gebeugt sein.",
+      "Achten Sie auf die Aufrichtung des Beckens, Oberkörpers sowie der Schultern.",
+      "Öffnen Sie das Knie zur Seite, indem Sie es aus der Körpermitte nach außen bewegen.",
+      "Halten Sie diese Position für 3 Sekunden und gehen Sie dann in die Ausgangsstellung zurück.",
+      "Halten Sie die Gesäßmuskulatur dabei angespannt und die Beinachse des Standbeins stabil.",
+      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite und wechseln Sie dann das Bein."
     ],
     "cues": [
-      "Don't let your hips roll backward",
-      "Keep your feet together throughout",
-      "Move slowly and with control"
+      "Becken aufrecht halten – nicht zur Seite kippen",
+      "Knie des Standbeins stabil in der Beinachse",
+      "Gesäßmuskulatur während der ganzen Übung angespannt"
+    ],
+    "timer": {
+      "mode": "interval",
+      "holdSeconds": 3,
+      "restSeconds": 3,
+      "sets": 12
+    },
+    "youtubeId": "yiGPgws33Hg"
+  },
+  {
+    "id": "kleine-ausfallschritte",
+    "name": "Kleine Ausfallschritte",
+    "targetMuscles": ["Quadrizeps", "Gluteus Maximus", "Hüftstabilisatoren"],
+    "instructions": [
+      "Starten Sie in einem hüftbreiten Stand und stützen Sie die Hände seitlich am Rumpf ab.",
+      "Machen Sie einen Ausfallschritt nach vorne und achten Sie dabei auf Ihre Beinachse – das Knie sollte in Richtung der Fußspitze zeigen.",
+      "Beugen Sie das vordere Knie und halten Sie diese Position für 5 Sekunden.",
+      "Achten Sie darauf, dass die Ferse des hinteren Fußes Bodenkontakt hält, das Becken gerade bleibt und der Oberkörper aufrecht ist.",
+      "Lösen Sie die Spannung und strecken Sie das Knie wieder.",
+      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite und wechseln Sie dann das Bein."
+    ],
+    "cues": [
+      "Knie in Richtung Fußspitze ausrichten – nicht nach innen fallen lassen",
+      "Ferse des hinteren Fußes bleibt am Boden",
+      "Oberkörper aufrecht, Becken gerade"
+    ],
+    "timer": {
+      "mode": "interval",
+      "holdSeconds": 5,
+      "restSeconds": 3,
+      "sets": 12
+    },
+    "youtubeId": "qKQJMwesjnM"
+  },
+  {
+    "id": "seitlicher-ausfallschritt",
+    "name": "Seitlicher Ausfallschritt",
+    "targetMuscles": ["Gluteus Medius", "Adduktoren", "Quadrizeps"],
+    "instructions": [
+      "Starten Sie in einem schulterbreiten Stand und stützen Sie die Hände seitlich am Rumpf ab.",
+      "Strecken Sie ein Bein zur Seite und tippen Sie mit der Fußspitze auf den Boden.",
+      "Stellen Sie anschließend Ihr Bein wieder in den schulterbreiten Stand zurück.",
+      "Achten Sie bei der Ausführung auf einen stabilen Rumpf und einen aufrechten Oberkörper.",
+      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite und wechseln Sie dann das Bein."
+    ],
+    "cues": [
+      "Rumpf stabil halten – Oberkörper nicht zur Seite neigen",
+      "Kontrollierte Bewegung beim Ausstrecken und Zurückführen",
+      "Standbein leicht gebeugt"
+    ],
+    "timer": {
+      "mode": "simple",
+      "durationSeconds": 45
+    },
+    "youtubeId": "Z01xasXBQrw"
+  },
+  {
+    "id": "wandrutschen",
+    "name": "Wandrutschen",
+    "targetMuscles": ["Quadrizeps", "Gluteus Maximus", "Hüftstabilisatoren"],
+    "instructions": [
+      "Starten Sie in einem hüftbreiten Stand mit dem Rücken an eine Wand gelehnt und stützen Sie die Hände seitlich am Rumpf ab. Die Füße sollten mit einem Abstand einer Fußlänge von der Wand platziert sein.",
+      "Rutschen Sie mit aufrechtem Oberkörper nach unten, bis die Knie leicht 45–60° gebeugt sind.",
+      "Schieben Sie die Knie nicht über die Zehen hinaus und halten Sie die Knie immer in der Beinachse.",
+      "Halten Sie diese Position für 15 Sekunden und drücken Sie sich anschließend wieder nach oben in die Ausgangsstellung.",
+      "Wiederholen Sie diese Übung 10 Mal mit einer Pausenzeit von 5 Sekunden zwischen den Wiederholungen."
+    ],
+    "cues": [
+      "Knie nicht über die Zehen schieben",
+      "Knie in der Beinachse halten – nicht nach innen fallen lassen",
+      "Rücken bleibt flach an der Wand"
     ],
     "timer": {
       "mode": "interval",
@@ -20,27 +94,194 @@
       "restSeconds": 5,
       "sets": 10
     },
-    "youtubeId": ""
+    "youtubeId": "OLALc2fsmtM"
   },
   {
-    "id": "glute-bridge",
-    "name": "Glute Bridge",
-    "targetMuscles": ["Gluteus Maximus", "Hamstrings", "Core"],
+    "id": "einbeiniges-gleichgewicht",
+    "name": "Einbeiniges Gleichgewicht",
+    "targetMuscles": ["Gluteus Medius", "Hüftstabilisatoren", "Unterschenkelmuskulatur"],
     "instructions": [
-      "Lie on your back with knees bent, feet flat on the floor hip-width apart.",
-      "Press through your heels and squeeze your glutes to lift your hips off the floor.",
-      "Raise until your body forms a straight line from shoulders to knees.",
-      "Hold at the top, then slowly lower your hips back to the floor."
+      "Starten Sie in einem schulterbreiten Stand an einer Wand, so dass ein Bein diese berührt. Der Arm dieser Seite lehnt ebenfalls mit der Außenseite dagegen.",
+      "Beugen Sie das wandseitige Bein 90° im Knie- und Hüftgelenk an und halten Sie den Kontakt zur Wand.",
+      "Drücken Sie das Bein mit Spannung gegen die Wand.",
+      "Halten Sie auf dem Standbein bei leicht gebeugtem Knie die Balance und achten Sie auf Ihre Beinachse.",
+      "Halten Sie diese Position für 5 Sekunden und gehen Sie dann in die Ausgangsstellung zurück.",
+      "Wiederholen Sie diese Übung 10–15 Mal mit einer Pausenzeit von 5 Sekunden zwischen den Wiederholungen."
     ],
     "cues": [
-      "Drive through your heels, not your toes",
-      "Squeeze glutes at the top",
-      "Keep your core braced throughout"
+      "Standbein leicht gebeugt, Beinachse stabil",
+      "Aktiv gegen die Wand drücken",
+      "Balance ruhig halten – kein Schwingen"
+    ],
+    "timer": {
+      "mode": "interval",
+      "holdSeconds": 5,
+      "restSeconds": 5,
+      "sets": 12
+    },
+    "youtubeId": "ILpQHqdF5Xc"
+  },
+  {
+    "id": "exzentrische-dehnung-ischiokrurale",
+    "name": "Exzentrische Dehnung der hinteren Oberschenkelmuskulatur",
+    "targetMuscles": ["Ischiokrurale Muskulatur", "Gluteus Maximus", "Rumpfstabilisatoren"],
+    "instructions": [
+      "Starten Sie mit leicht gebeugtem Knie auf einem Bein stehend und strecken Sie die Arme zur Seite.",
+      "Halten Sie den Oberkörper gerade und neigen Sie sich so weit Sie können nach vorne.",
+      "Strecken Sie das andere Bein dabei nach hinten oben aus und versuchen Sie, Oberkörper und Becken parallel zum Boden zu halten. Der Blick ist dabei zum Boden gerichtet.",
+      "Halten Sie diese Position für 3 Sekunden und gehen Sie dann in die Ausgangsstellung zurück.",
+      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite mit einer Pausenzeit von 3 Sekunden zwischen den Wiederholungen und wechseln Sie dann das Bein."
+    ],
+    "cues": [
+      "Oberkörper und Becken parallel zum Boden ausrichten",
+      "Standbein leicht gebeugt – nicht durchstrecken",
+      "Arme zur Seite für Balance nutzen"
+    ],
+    "timer": {
+      "mode": "interval",
+      "holdSeconds": 3,
+      "restSeconds": 3,
+      "sets": 12
+    },
+    "youtubeId": "--w_QKPN7w0"
+  },
+  {
+    "id": "seitwaerts-gehen",
+    "name": "Seitwärts Gehen",
+    "targetMuscles": ["Gluteus Medius", "Hüftabduktoren", "Hüftadduktoren"],
+    "instructions": [
+      "Starten Sie in einem hüftbreiten Stand. Die Fußspitzen zeigen gerade aus und die Arme sind zur Seite ausgestreckt. Die Knie sind dabei leicht gebeugt.",
+      "Machen Sie in eine Richtung gleichmäßige, große Seitwärtsschritte.",
+      "Halten Sie bei den Schritten Balance und Stabilität im Oberkörper. Achten Sie darauf, dass sich Ihr Oberkörper nicht zur Seite neigt.",
+      "Machen Sie 5 Schritte in eine Richtung und dann wieder zurück.",
+      "Wiederholen Sie diese Übung 4 Mal."
+    ],
+    "cues": [
+      "Oberkörper aufrecht – nicht zur Seite neigen",
+      "Knie leicht gebeugt halten",
+      "Gleichmäßige, kontrollierte Schritte"
     ],
     "timer": {
       "mode": "simple",
-      "durationSeconds": 30
+      "durationSeconds": 60
     },
-    "youtubeId": ""
+    "youtubeId": "jy55DMhen_k"
+  },
+  {
+    "id": "herabsteigen",
+    "name": "Herabsteigen",
+    "targetMuscles": ["Quadrizeps", "Gluteus Medius", "Hüftstabilisatoren"],
+    "instructions": [
+      "Starten Sie seitlich auf einer Treppenstufe oder einem Stepper stehend. Halten Sie sich gegebenenfalls an einem Treppengeländer fest oder stützen Sie die Hände seitlich am Rumpf ab.",
+      "Halten Sie den Oberkörper aufrecht und lassen Sie ein Bein seitlich der Stufe absinken, bis die Ferse den Boden berührt, indem Sie das andere Bein im Hüft- und Kniegelenk beugen.",
+      "Achten Sie darauf, dass das stützende Bein auf der Stufe in der Beinachse bleibt.",
+      "Wenn die Ferse den Boden berührt, drücken Sie sich wieder nach oben in die Ausgangsstellung.",
+      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite und wechseln Sie dann das Bein."
+    ],
+    "cues": [
+      "Stützbein in der Beinachse – Knie nicht nach innen fallen lassen",
+      "Oberkörper aufrecht halten",
+      "Langsam und kontrolliert absenken"
+    ],
+    "timer": {
+      "mode": "simple",
+      "durationSeconds": 45
+    },
+    "youtubeId": "__zvHYMJYvk"
+  },
+  {
+    "id": "einbeinige-kniebeuge",
+    "name": "Einbeinige Kniebeuge",
+    "targetMuscles": ["Quadrizeps", "Gluteus Maximus", "Hüftstabilisatoren"],
+    "instructions": [
+      "Starten Sie auf einem Bein stehend und beugen Sie das andere Bein 90° im Knie an. Halten Sie sich gegebenenfalls an einer Stuhllehne fest oder lassen Sie die Arme locker hängen.",
+      "Beugen Sie das Standbein zwischen 45 und 60° an.",
+      "Strecken Sie anschließend das Kniegelenk wieder, um in die Ausgangsstellung zurückzukehren.",
+      "Achten Sie auf eine saubere Ausführung: Schieben Sie das Knie nicht über die Zehen hinaus und halten Sie das Knie immer in der Beinachse.",
+      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite und wechseln Sie dann das Bein."
+    ],
+    "cues": [
+      "Knie nicht über die Zehen schieben",
+      "Knie in der Beinachse – nicht nach innen einbrechen",
+      "Kontrolliert absenken und aufstehen"
+    ],
+    "timer": {
+      "mode": "simple",
+      "durationSeconds": 45
+    },
+    "youtubeId": "ofKEb-bQUHk"
+  },
+  {
+    "id": "dehnung-hueftflexoren",
+    "name": "Dehnung der Hüftflexoren",
+    "targetMuscles": ["Hüftflexoren", "Iliopsoas", "Rectus Femoris"],
+    "instructions": [
+      "Starten Sie mit aufrechtem Oberkörper auf dem Boden kniend und stützen Sie die Hände seitlich am Rumpf ab.",
+      "Stellen Sie ein Bein nach vorne auf.",
+      "Schieben Sie das Becken und den Oberkörper nach vorne, bis Sie eine Dehnung auf der Vorderseite des knienden Beines spüren.",
+      "Achten Sie darauf, dass das Knie des vorderen Beines nicht über die Zehen hinausgeschoben wird und das Becken gerade gehalten wird.",
+      "Halten Sie diese Position für 5 Sekunden und kehren Sie danach wieder in die Ausgangsstellung zurück.",
+      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite und wechseln Sie dann das Bein."
+    ],
+    "cues": [
+      "Becken gerade halten – nicht nach vorne kippen",
+      "Vorderes Knie nicht über die Zehen schieben",
+      "Dehnung an der Vorderseite der Hüfte spüren"
+    ],
+    "timer": {
+      "mode": "interval",
+      "holdSeconds": 5,
+      "restSeconds": 3,
+      "sets": 12
+    },
+    "youtubeId": "Rq4JGUAtt4E"
+  },
+  {
+    "id": "hueftstreckung",
+    "name": "Hüftstreckung",
+    "targetMuscles": ["Gluteus Maximus", "Ischiokrurale Muskulatur", "Rumpfstabilisatoren"],
+    "instructions": [
+      "Starten Sie im Vierfüßlerstand: Hände unter den Schultern, Knie unter der Hüfte.",
+      "Spannen Sie die Rumpfmuskulatur an, halten Sie den Rücken gerade und richten Sie den Blick zum Boden.",
+      "Spannen Sie die Gesäßmuskulatur an und strecken Sie ein Bein nach hinten oben aus.",
+      "Achten Sie darauf, dass das Becken gerade bleibt und sich nicht verdreht.",
+      "Halten Sie das Bein 5 Sekunden in dieser Position und kehren Sie danach wieder in die Ausgangsstellung zurück.",
+      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite und wechseln Sie dann das Bein."
+    ],
+    "cues": [
+      "Becken gerade – nicht verdrehen oder abkippen",
+      "Rücken flach halten",
+      "Gesäßmuskulatur aktiv anspannen"
+    ],
+    "timer": {
+      "mode": "interval",
+      "holdSeconds": 5,
+      "restSeconds": 3,
+      "sets": 12
+    },
+    "youtubeId": "hKI8Uc0nKn8"
+  },
+  {
+    "id": "bruecke-bridging",
+    "name": "Brücke (Bridging)",
+    "targetMuscles": ["Gluteus Maximus", "Ischiokrurale Muskulatur", "Rumpfmuskulatur"],
+    "instructions": [
+      "Starten Sie in Rückenlage und stellen Sie beide Knie hüftbreit auf. Die Arme liegen dabei locker neben dem Oberkörper.",
+      "Heben Sie das Becken so hoch wie möglich vom Boden ab und halten Sie dabei die Rumpf- und Gesäßmuskulatur angespannt.",
+      "Halten Sie diese Position für 5 Sekunden und lassen Sie das Becken anschließend langsam wieder zum Boden sinken.",
+      "Wiederholen Sie diese Übung 10–15 Mal."
+    ],
+    "cues": [
+      "Gesäß- und Rumpfmuskulatur aktiv anspannen",
+      "Becken so hoch wie möglich heben",
+      "Langsam und kontrolliert absenken"
+    ],
+    "timer": {
+      "mode": "interval",
+      "holdSeconds": 5,
+      "restSeconds": 3,
+      "sets": 12
+    },
+    "youtubeId": "d8B_7Ea8wjs"
   }
 ]
