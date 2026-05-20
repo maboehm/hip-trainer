@@ -2,13 +2,12 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Exercise } from './src/types';
 import ExerciseListScreen from './src/screens/ExerciseListScreen';
 import ExerciseDetailScreen from './src/screens/ExerciseDetailScreen';
 
 export type RootStackParamList = {
   ExerciseList: undefined;
-  ExerciseDetail: { exerciseId: string; index: number };
+  ExerciseDetail: { exerciseId: string; index: number; direction?: 'forward' | 'back' };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -28,7 +27,11 @@ export default function App() {
         <Stack.Screen
           name="ExerciseDetail"
           component={ExerciseDetailScreen}
-          options={{ title: 'Exercise' }}
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+            cardStyleInterpolator: () => ({}),
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
