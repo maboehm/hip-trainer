@@ -1,26 +1,19 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View,
   Text,
-  ScrollView,
   TouchableOpacity,
   StyleSheet,
-  Animated,
-  useWindowDimensions,
 } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import {
-  GestureHandlerRootView,
-  NativeViewGestureHandler,
-  PanGestureHandler,
-  PanGestureHandlerGestureEvent,
-} from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { RootStackParamList } from '../../App';
 import exercises from '../../data/exercises.json';
 import { Exercise } from '../types';
 import Timer from '../components/Timer';
+import SlidablePager, { SlidablePagerHandle } from '../components/SlidablePager';
 
 type Props = {
   navigation: StackNavigationProp<RootStackParamList, 'ExerciseDetail'>;
@@ -28,86 +21,16 @@ type Props = {
 };
 
 const exerciseList = exercises as Exercise[];
-const SLIDE_DURATION = 220;
-
-// Two slots: A and B. Each has its own translateX Animated.Value.
-// Invariant between transitions: active slot is at 0, idle slot is parked at +width (off-screen right).
-// On transition:
-//   1. Load content into idle slot.
-//   2. Snap idle slot to the entry side (±width) — it's already off-screen so no visible jump.
-//   3. Animate both slots simultaneously to their exit/entry positions.
-//   4. On completion, park the now-idle (outgoing) slot back to +width and flip activeSlot.
-
-type Slot = 'A' | 'B';
 
 export default function ExerciseDetailScreen({ navigation, route }: Props) {
   const [currentIndex, setCurrentIndex] = useState(route.params.index);
   const [timerVisible, setTimerVisible] = useState(false);
-  const [transitioning, setTransitioning] = useState(false);
   const insets = useSafeAreaInsets();
-  const { width } = useWindowDimensions();
-  const scrollRef = useRef<ScrollView>(null);
-  const panRef = useRef<PanGestureHandler>(null);
-
-  const activeSlot = useRef<Slot>('A');
-  const [slotContent, setSlotContent] = useState<{ A: number; B: number }>({
-    A: route.params.index,
-    B: route.params.index,
-  });
-
-  // Each slot has its own translateX. Invariant: active=0, idle=+width.
-  const translateA = useRef(new Animated.Value(0)).current;
-  const translateB = useRef(new Animated.Value(width)).current;
+  const pagerRef = useRef<SlidablePagerHandle>(null);
 
   const exercise = exerciseList[currentIndex];
   const isFirst = currentIndex === 0;
   const isLast = currentIndex >= exerciseList.length - 1;
-
-  const slide = useCallback((nextIndex: number, direction: 'forward' | 'back') => {
-    if (transitioning) return;
-
-    const current = activeSlot.current;
-    const next: Slot = current === 'A' ? 'B' : 'A';
-    const currentAnim = current === 'A' ? translateA : translateB;
-    const nextAnim = current === 'A' ? translateB : translateA;
-
-    const enterFrom = direction === 'forward' ? width : -width;
-    const exitTo = direction === 'forward' ? -width : width;
-
-    // Step 1: load content into idle slot
-    setSlotContent(prev => ({ ...prev, [next]: nextIndex }));
-    setTransitioning(true);
-    setTimerVisible(false);
-
-    // Step 2: snap idle slot to entry side (it's already off-screen, no visible jump)
-    nextAnim.setValue(enterFrom);
-
-    // Step 3: animate both simultaneously
-    Animated.parallel([
-      Animated.timing(currentAnim, { toValue: exitTo, duration: SLIDE_DURATION, useNativeDriver: true }),
-      Animated.timing(nextAnim, { toValue: 0, duration: SLIDE_DURATION, useNativeDriver: true }),
-    ]).start(() => {
-      // Step 4: park outgoing slot off-screen right (restore invariant), flip active
-      currentAnim.setValue(width);
-      activeSlot.current = next;
-      setCurrentIndex(nextIndex);
-      setTransitioning(false);
-    });
-  }, [transitioning, width]);
-
-  const goNext = () => { if (!isLast) slide(currentIndex + 1, 'forward'); };
-  const goPrev = () => { if (!isFirst) slide(currentIndex - 1, 'back'); };
-
-  const onGestureEvent = ({ nativeEvent }: PanGestureHandlerGestureEvent) => {
-    const { translationX, translationY, state } = nativeEvent;
-    if (state === 5) {
-      const absX = Math.abs(translationX);
-      const absY = Math.abs(translationY);
-      if (absX > 50 && absX > absY) {
-        translationX < 0 ? goNext() : goPrev();
-      }
-    }
-  };
 
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -125,31 +48,15 @@ export default function ExerciseDetailScreen({ navigation, route }: Props) {
         </Text>
       </View>
 
-      {/* Clipping wrapper */}
-      <PanGestureHandler
-        ref={panRef}
-        onHandlerStateChange={onGestureEvent}
-        simultaneousHandlers={scrollRef}
-        activeOffsetX={[-20, 20]}
-        failOffsetY={[-10, 10]}
-      >
-        <View style={styles.bodyClip}>
-          {/* Slot A */}
-          <Animated.View style={[StyleSheet.absoluteFill, { transform: [{ translateX: translateA }] }]}>
-            <NativeViewGestureHandler ref={scrollRef} simultaneousHandlers={panRef}>
-              <ScrollView contentContainerStyle={styles.content} scrollEventThrottle={16}>
-                <ExerciseContent exercise={exerciseList[slotContent.A]} />
-              </ScrollView>
-            </NativeViewGestureHandler>
-          </Animated.View>
-          {/* Slot B */}
-          <Animated.View style={[StyleSheet.absoluteFill, { transform: [{ translateX: translateB }] }]}>
-            <ScrollView contentContainerStyle={styles.content} scrollEventThrottle={16}>
-              <ExerciseContent exercise={exerciseList[slotContent.B]} />
-            </ScrollView>
-          </Animated.View>
-        </View>
-      </PanGestureHandler>
+      {/* Pager body */}
+      <SlidablePager
+        ref={pagerRef}
+        count={exerciseList.length}
+        initialIndex={route.params.index}
+        renderItem={index => <ExerciseContent exercise={exerciseList[index]} />}
+        onIndexChange={setCurrentIndex}
+        onTransitionStart={() => setTimerVisible(false)}
+      />
 
       {/* Fixed bottom bar */}
       <View style={[styles.actionBar, { paddingBottom: insets.bottom + 12 }]}>
@@ -165,14 +72,14 @@ export default function ExerciseDetailScreen({ navigation, route }: Props) {
         <View style={styles.navButtons}>
           <TouchableOpacity
             style={[styles.prevButton, isFirst && styles.disabledButton]}
-            onPress={goPrev}
+            onPress={() => pagerRef.current?.slideBack()}
             disabled={isFirst}
           >
             <Text style={[styles.prevButtonText, isFirst && styles.disabledText]}>← Prev</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.nextButton, isLast && styles.disabledButton]}
-            onPress={goNext}
+            onPress={() => pagerRef.current?.slideForward()}
             disabled={isLast}
           >
             <Text style={[styles.nextButtonText, isLast && styles.disabledText]}>Next →</Text>
@@ -229,7 +136,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
     textTransform: 'uppercase',
   },
-  bodyClip: { flex: 1, overflow: 'hidden' },
   content: { padding: 20, paddingBottom: 24 },
   name: { fontSize: 28, fontWeight: '700', color: '#111', marginBottom: 24 },
   sectionLabel: {
