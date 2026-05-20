@@ -1,0 +1,46 @@
+[
+  {
+    "id": "clamshell",
+    "name": "Clamshell",
+    "targetMuscles": ["Gluteus Medius", "Hip External Rotators"],
+    "instructions": [
+      "Lie on your side with your hips and knees bent at 45 degrees.",
+      "Keep your feet stacked together and your core engaged.",
+      "Rotate your top knee upward as far as you can without moving your pelvis.",
+      "Hold briefly at the top, then slowly lower back down."
+    ],
+    "cues": [
+      "Don't let your hips roll backward",
+      "Keep your feet together throughout",
+      "Move slowly and with control"
+    ],
+    "timer": {
+      "mode": "interval",
+      "holdSeconds": 15,
+      "restSeconds": 5,
+      "sets": 10
+    },
+    "youtubeId": ""
+  },
+  {
+    "id": "glute-bridge",
+    "name": "Glute Bridge",
+    "targetMuscles": ["Gluteus Maximus", "Hamstrings", "Core"],
+    "instructions": [
+      "Lie on your back with knees bent, feet flat on the floor hip-width apart.",
+      "Press through your heels and squeeze your glutes to lift your hips off the floor.",
+      "Raise until your body forms a straight line from shoulders to knees.",
+      "Hold at the top, then slowly lower your hips back to the floor."
+    ],
+    "cues": [
+      "Drive through your heels, not your toes",
+      "Squeeze glutes at the top",
+      "Keep your core braced throughout"
+    ],
+    "timer": {
+      "mode": "simple",
+      "durationSeconds": 30
+    },
+    "youtubeId": ""
+  }
+]
