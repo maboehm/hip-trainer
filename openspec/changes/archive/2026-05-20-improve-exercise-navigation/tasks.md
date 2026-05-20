@@ -21,6 +21,6 @@
 ## 4. Verification
 
 - [x] 4.1 Run `npx tsc --noEmit` and fix any type errors
-- [ ] 4.2 Manually verify sticky bar stays visible when scrolling long instructions on iOS
-- [ ] 4.3 Manually verify Previous/Next boundary states (disabled at first and last exercise)
-- [ ] 4.4 Manually verify swipe left/right navigation and boundary no-op behavior
+- [x] 4.2 Manually verify sticky bar stays visible when scrolling long instructions on iOS
+- [x] 4.3 Manually verify Previous/Next boundary states (disabled at first and last exercise)
+- [x] 4.4 Manually verify swipe left/right navigation and boundary no-op behavior

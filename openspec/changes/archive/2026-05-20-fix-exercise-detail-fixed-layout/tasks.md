@@ -23,6 +23,6 @@
 ## 5. Verification
 
 - [x] 5.1 Run `npx tsc --noEmit` and fix any type errors
-- [ ] 5.2 Manually test: swipe forward and back between exercises and confirm the header and bottom bar stay fixed
-- [ ] 5.3 Manually test: tap Prev/Next and confirm the header and bottom bar stay fixed
-- [ ] 5.4 Manually test: tap back button in custom header and confirm navigation returns to the exercise list
+- [x] 5.2 Manually test: swipe forward and back between exercises and confirm the header and bottom bar stay fixed
+- [x] 5.3 Manually test: tap Prev/Next and confirm the header and bottom bar stay fixed
+- [x] 5.4 Manually test: tap back button in custom header and confirm navigation returns to the exercise list
