@@ -5,7 +5,8 @@ import React, {
   useState,
   useCallback,
 } from 'react';
-import { StyleSheet, ScrollView, useWindowDimensions } from 'react-native';
+import { StyleSheet, useWindowDimensions } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import { runOnJS } from 'react-native-worklets';
 import Animated, {
   useSharedValue,
@@ -193,9 +194,6 @@ const SlidablePager = forwardRef<SlidablePagerHandle, SlidablePagerProps>(
     // Gestures
     // -----------------------------------------------------------------------
 
-    const nativeA = Gesture.Native();
-    const nativeB = Gesture.Native();
-
     const panGesture = Gesture.Pan()
       .activeOffsetX([-20, 20])
       .failOffsetY([-10, 10])
@@ -212,14 +210,12 @@ const SlidablePager = forwardRef<SlidablePagerHandle, SlidablePagerProps>(
         }
       });
 
-    const combinedGesture = Gesture.Simultaneous(panGesture, nativeA, nativeB);
-
     // -----------------------------------------------------------------------
     // Render
     // -----------------------------------------------------------------------
 
     return (
-      <GestureDetector gesture={combinedGesture}>
+      <GestureDetector gesture={panGesture}>
         <Animated.View style={styles.clip}>
           {/* Slot A */}
           <Animated.View style={[StyleSheet.absoluteFill, styleA]}>

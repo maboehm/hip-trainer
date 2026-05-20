@@ -62,7 +62,7 @@ export default function ExerciseDetailScreen({ navigation, route }: Props) {
       <View style={[styles.actionBar, { paddingBottom: insets.bottom + 12 }]}>
         {timerVisible ? (
           <View style={styles.timerInline}>
-            <Timer config={exercise.timer} />
+            <Timer config={exercise.timer} autoStart onReset={() => setTimerVisible(false)} />
           </View>
         ) : (
           <TouchableOpacity style={styles.timerButton} onPress={() => setTimerVisible(true)}>
@@ -75,14 +75,14 @@ export default function ExerciseDetailScreen({ navigation, route }: Props) {
             onPress={() => pagerRef.current?.slideBack()}
             disabled={isFirst}
           >
-            <Text style={[styles.prevButtonText, isFirst && styles.disabledText]}>← Prev</Text>
+            <Text style={[styles.prevButtonText, isFirst && styles.disabledText]}>← Zurück</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.nextButton, isLast && styles.disabledButton]}
             onPress={() => pagerRef.current?.slideForward()}
             disabled={isLast}
           >
-            <Text style={[styles.nextButtonText, isLast && styles.disabledText]}>Next →</Text>
+            <Text style={[styles.nextButtonText, isLast && styles.disabledText]}>Weiter →</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -94,9 +94,9 @@ function ExerciseContent({ exercise }: { exercise: Exercise }) {
   return (
     <>
       <Text style={styles.name}>{exercise.name}</Text>
-      <Text style={styles.sectionLabel}>Target Muscles</Text>
+      <Text style={styles.sectionLabel}>Muskeln</Text>
       <Text style={styles.muscles}>{exercise.targetMuscles.join(' · ')}</Text>
-      <Text style={styles.sectionLabel}>Instructions</Text>
+      <Text style={styles.sectionLabel}>Anleitung</Text>
       {exercise.instructions.map((step, i) => (
         <View key={i} style={styles.instructionRow}>
           <Text style={styles.stepNumber}>{i + 1}.</Text>
@@ -105,7 +105,7 @@ function ExerciseContent({ exercise }: { exercise: Exercise }) {
       ))}
       {exercise.cues.length > 0 && (
         <>
-          <Text style={styles.sectionLabel}>Key Cues</Text>
+          <Text style={styles.sectionLabel}>Wichtig</Text>
           {exercise.cues.map((cue, i) => (
             <Text key={i} style={styles.cue}>• {cue}</Text>
           ))}

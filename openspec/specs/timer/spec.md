@@ -5,9 +5,20 @@ The app SHALL support a simple countdown mode that counts down from a configured
 - **WHEN** a simple timer is started
 - **THEN** it counts down from `durationSeconds` to zero and then displays a completion state
 
-#### Scenario: Progress shown
-- **WHEN** a simple timer is running
-- **THEN** a progress indicator shows the proportion of time elapsed
+### Requirement: Progress shown
+The app SHALL display a progress bar that drains from full to empty as time elapses in the current phase, and SHALL animate smoothly between updates rather than jumping.
+
+#### Scenario: Bar starts full
+- **WHEN** a timer phase begins
+- **THEN** the progress bar is completely full
+
+#### Scenario: Bar drains over time
+- **WHEN** a timer phase is running
+- **THEN** the progress bar continuously drains from right to left, reaching empty when the phase ends
+
+#### Scenario: Bar animates smoothly
+- **WHEN** the remaining time decrements
+- **THEN** the progress bar transitions to its new width with a smooth animation rather than an instant jump
 
 ### Requirement: Interval timer
 The app SHALL support an interval mode that alternates between a "hold" phase and a "rest" phase for a configured number of sets.

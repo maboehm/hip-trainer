@@ -27,7 +27,7 @@ export default function ExerciseListScreen({ navigation }: Props) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['bottom', 'left', 'right']}>
       <FlatList
         data={exerciseList}
         keyExtractor={(item) => item.id}
@@ -52,7 +52,7 @@ export default function ExerciseListScreen({ navigation }: Props) {
           style={styles.startButton}
           onPress={() => navigateToExercise(0)}
         >
-          <Text style={styles.startButtonText}>Start Routine</Text>
+          <Text style={styles.startButtonText}>Routine Starten</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

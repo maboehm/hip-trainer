@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { TimerConfig } from '../types';
 import { useTimer } from '../hooks/useTimer';
@@ -6,6 +6,8 @@ import ProgressBar from './ProgressBar';
 
 interface Props {
   config: TimerConfig;
+  autoStart?: boolean;
+  onReset?: () => void; // called when user resets — lets parent hide the timer
 }
 
 function formatSeconds(s: number): string {
@@ -27,57 +29,99 @@ function phaseTotal(config: TimerConfig, phase: string): number {
   return 1;
 }
 
-export default function Timer({ config }: Props) {
+export default function Timer({ config, autoStart, onReset }: Props) {
   const [state, controls] = useTimer(config);
-  const { phase, remaining, currentSet, totalSets, isRunning } = state;
+  const { phase, remaining, currentSet, totalSets, isRunning, snapBar } = state;
+
+  useEffect(() => {
+    if (autoStart) {
+      controls.start();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleReset = () => {
+    controls.reset();
+    onReset?.();
+  };
 
   const total = phaseTotal(config, phase);
-  const progress = phase === 'idle' ? 0 : (total - remaining) / total;
+  const countdownTotal = 3;
+  const progress =
+    phase === 'idle'
+      ? 0
+      : phase === 'countdown'
+      ? (countdownTotal - remaining) / countdownTotal
+      : (total - remaining) / total;
   const color = phaseColor(phase);
 
   if (phase === 'done') {
     return (
       <View style={styles.container}>
         <Text style={styles.doneText}>Done!</Text>
-        <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={controls.reset}>
-          <Text style={styles.buttonText}>Reset</Text>
+        <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={handleReset}>
+          <Text style={[styles.buttonText, { color: '#555' }]}>Reset</Text>
         </TouchableOpacity>
       </View>
     );
   }
 
-  if (phase === 'idle') {
+  if (phase === 'countdown') {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={[styles.button, { backgroundColor: color }]} onPress={controls.start}>
-          <Text style={styles.buttonText}>Start Timer</Text>
+        <Text style={styles.countdownLabel}>GET READY</Text>
+        <Text style={[styles.countdown, { color: '#aaa' }]}>{remaining}</Text>
+        <View style={styles.progressContainer}>
+          <ProgressBar progress={progress} color="#aaa" snap={snapBar} />
+        </View>
+        <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={handleReset}>
+          <Text style={[styles.buttonText, { color: '#555' }]}>Cancel</Text>
         </TouchableOpacity>
       </View>
     );
   }
 
+  // Active: hold or rest
   return (
     <View style={styles.container}>
       {config.mode === 'interval' && (
-        <>
-          <View style={styles.phaseRow}>
-            <Text style={[styles.phaseLabel, phase === 'hold' ? styles.active : styles.inactive]}>
-              HOLD
-            </Text>
-            <Text style={styles.phaseDivider}> · </Text>
-            <Text style={[styles.phaseLabel, phase === 'rest' ? styles.active : styles.inactive]}>
-              REST
-            </Text>
-          </View>
-          <Text style={styles.setCounter}>Set {currentSet} of {totalSets}</Text>
-        </>
+        <View style={styles.phaseRow}>
+          <Text style={[styles.phaseLabel, phase === 'hold' ? styles.active : styles.inactive]}>
+            HOLD
+          </Text>
+          <Text style={styles.phaseDivider}> · </Text>
+          <Text style={[styles.phaseLabel, phase === 'rest' ? styles.active : styles.inactive]}>
+            REST
+          </Text>
+        </View>
       )}
 
       <Text style={[styles.countdown, { color }]}>{formatSeconds(remaining)}</Text>
 
       <View style={styles.progressContainer}>
-        <ProgressBar progress={progress} color={color} />
+        <ProgressBar progress={progress} color={color} snap={snapBar} />
       </View>
+
+      {config.mode === 'interval' && (
+        <View style={styles.pipsRow}>
+          {Array.from({ length: totalSets }).map((_, i) => {
+            const setNum = i + 1;
+            const filled = setNum < currentSet;
+            const current = setNum === currentSet;
+            return (
+              <View
+                key={i}
+                style={[
+                  styles.pip,
+                  filled && { backgroundColor: color },
+                  current && [styles.pipCurrent, { backgroundColor: color }],
+                  !filled && !current && styles.pipEmpty,
+                ]}
+              />
+            );
+          })}
+        </View>
+      )}
 
       <View style={styles.controls}>
         <TouchableOpacity
@@ -86,7 +130,7 @@ export default function Timer({ config }: Props) {
         >
           <Text style={styles.buttonText}>{isRunning ? 'Pause' : 'Resume'}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={controls.reset}>
+        <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={handleReset}>
           <Text style={[styles.buttonText, { color: '#555' }]}>Reset</Text>
         </TouchableOpacity>
       </View>
@@ -97,8 +141,15 @@ export default function Timer({ config }: Props) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    paddingVertical: 24,
-    gap: 16,
+    paddingVertical: 20,
+    gap: 14,
+  },
+  countdownLabel: {
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 2,
+    color: '#bbb',
+    textTransform: 'uppercase',
   },
   phaseRow: {
     flexDirection: 'row',
@@ -119,10 +170,6 @@ const styles = StyleSheet.create({
     color: '#ccc',
     fontSize: 15,
   },
-  setCounter: {
-    fontSize: 14,
-    color: '#777',
-  },
   countdown: {
     fontSize: 72,
     fontWeight: '200',
@@ -131,6 +178,26 @@ const styles = StyleSheet.create({
   progressContainer: {
     width: '100%',
     paddingHorizontal: 4,
+  },
+  pipsRow: {
+    flexDirection: 'row',
+    gap: 6,
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    paddingHorizontal: 8,
+  },
+  pip: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+  },
+  pipCurrent: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+  },
+  pipEmpty: {
+    backgroundColor: '#ddd',
   },
   controls: {
     flexDirection: 'row',
