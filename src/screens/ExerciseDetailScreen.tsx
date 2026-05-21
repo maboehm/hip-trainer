@@ -11,7 +11,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { RootStackParamList } from '../../App';
 import exercises from '../../data/exercises.json';
-import { Exercise } from '../types';
+import { Exercise, TimerConfig } from '../types';
 import Timer from '../components/Timer';
 import SlidablePager, { SlidablePagerHandle } from '../components/SlidablePager';
 
@@ -90,12 +90,64 @@ export default function ExerciseDetailScreen({ navigation, route }: Props) {
   );
 }
 
+// ─── Pill Row ────────────────────────────────────────────────────────────────
+
+function PillRow({ timer, reps }: { timer?: TimerConfig; reps?: number | string }) {
+  if (timer && timer.mode === 'interval') {
+    return (
+      <View style={styles.pillRow}>
+        <Pill value={`${timer.sets}`} label="Wdh." />
+        <Pill value={`${timer.holdSeconds}s`} label="Halten" />
+        <Pill value={`${timer.restSeconds}s`} label="Pause" />
+      </View>
+    );
+  }
+  if (reps != null) {
+    return (
+      <View style={styles.pillRow}>
+        <Pill value={`${reps}`} label="Wdh." />
+      </View>
+    );
+  }
+  return null;
+}
+
+function Pill({ value, label }: { value: string; label: string }) {
+  return (
+    <View style={styles.pill}>
+      <Text style={styles.pillValue}>{value}</Text>
+      <Text style={styles.pillLabel}>{label}</Text>
+    </View>
+  );
+}
+
+// ─── Exercise Content ────────────────────────────────────────────────────────
+
 function ExerciseContent({ exercise }: { exercise: Exercise }) {
   return (
     <>
+      {/* 1. Name */}
       <Text style={styles.name}>{exercise.name}</Text>
-      <Text style={styles.sectionLabel}>Muskeln</Text>
-      <Text style={styles.muscles}>{exercise.targetMuscles.join(' · ')}</Text>
+
+      {/* 2. Rep / timer pills */}
+      <PillRow timer={exercise.timer} reps={exercise.reps} />
+
+      {/* 3. Wichtig — cues as blockquote */}
+      {exercise.cues.length > 0 && (
+        <>
+          <Text style={styles.sectionLabel}>Wichtig</Text>
+          <View style={styles.cueBlock}>
+            {exercise.cues.map((cue, i) => (
+              <View key={i} style={styles.cueRow}>
+                <Text style={styles.cueBullet}>•</Text>
+                <Text style={styles.cue}>{cue}</Text>
+              </View>
+            ))}
+          </View>
+        </>
+      )}
+
+      {/* 4. Anleitung */}
       <Text style={styles.sectionLabel}>Anleitung</Text>
       {exercise.instructions.map((step, i) => (
         <View key={i} style={styles.instructionRow}>
@@ -103,20 +155,20 @@ function ExerciseContent({ exercise }: { exercise: Exercise }) {
           <Text style={styles.stepText}>{step}</Text>
         </View>
       ))}
-      {exercise.cues.length > 0 && (
-        <>
-          <Text style={styles.sectionLabel}>Wichtig</Text>
-          {exercise.cues.map((cue, i) => (
-            <Text key={i} style={styles.cue}>• {cue}</Text>
-          ))}
-        </>
-      )}
+
+      {/* 5. Muskeln */}
+      <Text style={[styles.sectionLabel, styles.sectionLabelBottom]}>Muskeln</Text>
+      <Text style={styles.muscles}>{exercise.targetMuscles.join(' · ')}</Text>
     </>
   );
 }
 
+// ─── Styles ──────────────────────────────────────────────────────────────────
+
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f8f8f8' },
+
+  // Header
   header: {
     backgroundColor: '#fff',
     borderBottomWidth: 1,
@@ -136,8 +188,29 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
     textTransform: 'uppercase',
   },
-  content: { padding: 20, paddingBottom: 24 },
-  name: { fontSize: 28, fontWeight: '700', color: '#111', marginBottom: 24 },
+
+  // Exercise name
+  name: { fontSize: 28, fontWeight: '700', color: '#111', marginBottom: 16 },
+
+  // Pill row
+  pillRow: {
+    flexDirection: 'row',
+    gap: 16,
+    marginBottom: 24,
+    justifyContent: 'center',
+  },
+  pill: {
+    backgroundColor: '#f0f4ff',
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    alignItems: 'center',
+    minWidth: 64,
+  },
+  pillValue: { fontSize: 20, fontWeight: '700', color: '#111' },
+  pillLabel: { fontSize: 12, fontWeight: '500', color: '#555', marginTop: 2 },
+
+  // Section labels
   sectionLabel: {
     fontSize: 12,
     fontWeight: '700',
@@ -147,11 +220,28 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 8,
   },
-  muscles: { fontSize: 15, color: '#333' },
+  sectionLabelBottom: { marginTop: 28 },
+
+  // Wichtig blockquote
+  cueBlock: {
+    borderLeftWidth: 3,
+    borderLeftColor: '#2a7aef',
+    paddingLeft: 12,
+    gap: 6,
+  },
+  cueRow: { flexDirection: 'row', gap: 6 },
+  cueBullet: { fontSize: 15, color: '#111', lineHeight: 22 },
+  cue: { fontSize: 15, fontWeight: '400', color: '#111', lineHeight: 22, flex: 1 },
+
+  // Instructions
   instructionRow: { flexDirection: 'row', marginBottom: 8, gap: 8 },
   stepNumber: { fontSize: 15, fontWeight: '700', color: '#2a7aef', width: 20 },
-  stepText: { fontSize: 15, color: '#333', flex: 1, lineHeight: 22 },
-  cue: { fontSize: 14, color: '#555', marginBottom: 4, lineHeight: 20 },
+  stepText: { fontSize: 15, fontWeight: '400', color: '#444', flex: 1, lineHeight: 22 },
+
+  // Muscles
+  muscles: { fontSize: 13, fontWeight: '400', color: '#888' },
+
+  // Bottom action bar
   actionBar: {
     backgroundColor: '#fff',
     borderTopWidth: 1,

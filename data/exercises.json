@@ -2,7 +2,11 @@
   {
     "id": "hueftabduktion-im-stehen",
     "name": "Hüftabduktion im Stehen",
-    "targetMuscles": ["Gluteus Medius", "Gluteus Maximus", "Hüftabduktoren"],
+    "targetMuscles": [
+      "Gluteus Medius",
+      "Gluteus Maximus",
+      "Hüftabduktoren"
+    ],
     "instructions": [
       "Starten Sie mit geschlossenen Füßen und stützen Sie die Hände seitlich am Rumpf ab. Falls benötigt, können Sie sich an einer Stuhllehne festhalten.",
       "Spannen Sie die Gesäßmuskulatur an und heben Sie ein Bein vom Boden ab. Das Knie sollte dabei in einem 45°-Winkel gebeugt sein.",
@@ -10,7 +14,7 @@
       "Öffnen Sie das Knie zur Seite, indem Sie es aus der Körpermitte nach außen bewegen.",
       "Halten Sie diese Position für 3 Sekunden und gehen Sie dann in die Ausgangsstellung zurück.",
       "Halten Sie die Gesäßmuskulatur dabei angespannt und die Beinachse des Standbeins stabil.",
-      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite und wechseln Sie dann das Bein.",
+      "Wiederholen Sie diese Übung 10-15 Mal auf einer Seite und wechseln Sie dann das Bein."
     ],
     "cues": [
       "Becken aufrecht halten – nicht zur Seite kippen",
@@ -28,14 +32,18 @@
   {
     "id": "kleine-ausfallschritte",
     "name": "Kleine Ausfallschritte",
-    "targetMuscles": ["Quadrizeps", "Gluteus Maximus", "Hüftstabilisatoren"],
+    "targetMuscles": [
+      "Quadrizeps",
+      "Gluteus Maximus",
+      "Hüftstabilisatoren"
+    ],
     "instructions": [
       "Starten Sie in einem hüftbreiten Stand und stützen Sie die Hände seitlich am Rumpf ab.",
       "Machen Sie einen Ausfallschritt nach vorne und achten Sie dabei auf Ihre Beinachse – das Knie sollte in Richtung der Fußspitze zeigen.",
       "Beugen Sie das vordere Knie und halten Sie diese Position für 5 Sekunden.",
       "Achten Sie darauf, dass die Ferse des hinteren Fußes Bodenkontakt hält, das Becken gerade bleibt und der Oberkörper aufrecht ist.",
       "Lösen Sie die Spannung und strecken Sie das Knie wieder.",
-      "Wiederholen Sie diese Übung 10–15 Mal auf einer Seite und wechseln Sie dann das Bein."
+      "Wiederholen Sie diese Übung 10-15 Mal auf einer Seite und wechseln Sie dann das Bein."
     ],
     "cues": [
       "Knie in Richtung Fußspitze ausrichten – nicht nach innen fallen lassen",
@@ -53,7 +61,11 @@
   {
     "id": "seitlicher-ausfallschritt",
     "name": "Seitlicher Ausfallschritt",
-    "targetMuscles": ["Gluteus Medius", "Adduktoren", "Quadrizeps"],
+    "targetMuscles": [
+      "Gluteus Medius",
+      "Adduktoren",
+      "Quadrizeps"
+    ],
     "instructions": [
       "Starten Sie in einem schulterbreiten Stand und stützen Sie die Hände seitlich am Rumpf ab.",
       "Strecken Sie ein Bein zur Seite und tippen Sie mit der Fußspitze auf den Boden.",
@@ -66,12 +78,17 @@
       "Kontrollierte Bewegung beim Ausstrecken und Zurückführen",
       "Standbein leicht gebeugt"
     ],
+    "reps": "12",
     "youtubeId": "Z01xasXBQrw"
   },
   {
     "id": "wandrutschen",
     "name": "Wandrutschen",
-    "targetMuscles": ["Quadrizeps", "Gluteus Maximus", "Hüftstabilisatoren"],
+    "targetMuscles": [
+      "Quadrizeps",
+      "Gluteus Maximus",
+      "Hüftstabilisatoren"
+    ],
     "instructions": [
       "Starten Sie in einem hüftbreiten Stand mit dem Rücken an eine Wand gelehnt und stützen Sie die Hände seitlich am Rumpf ab. Die Füße sollten mit einem Abstand einer Fußlänge von der Wand platziert sein.",
       "Rutschen Sie mit aufrechtem Oberkörper nach unten, bis die Knie leicht 45–60° gebeugt sind.",
@@ -95,7 +112,11 @@
   {
     "id": "einbeiniges-gleichgewicht",
     "name": "Einbeiniges Gleichgewicht",
-    "targetMuscles": ["Gluteus Medius", "Hüftstabilisatoren", "Unterschenkelmuskulatur"],
+    "targetMuscles": [
+      "Gluteus Medius",
+      "Hüftstabilisatoren",
+      "Unterschenkelmuskulatur"
+    ],
     "instructions": [
       "Starten Sie in einem schulterbreiten Stand an einer Wand, so dass ein Bein diese berührt. Der Arm dieser Seite lehnt ebenfalls mit der Außenseite dagegen.",
       "Beugen Sie das wandseitige Bein 90° im Knie- und Hüftgelenk an und halten Sie den Kontakt zur Wand.",
@@ -120,7 +141,11 @@
   {
     "id": "exzentrische-dehnung-ischiokrurale",
     "name": "Exzentrische Dehnung der hinteren Oberschenkelmuskulatur",
-    "targetMuscles": ["Ischiokrurale Muskulatur", "Gluteus Maximus", "Rumpfstabilisatoren"],
+    "targetMuscles": [
+      "Ischiokrurale Muskulatur",
+      "Gluteus Maximus",
+      "Rumpfstabilisatoren"
+    ],
     "instructions": [
       "Starten Sie mit leicht gebeugtem Knie auf einem Bein stehend und strecken Sie die Arme zur Seite.",
       "Halten Sie den Oberkörper gerade und neigen Sie sich so weit Sie können nach vorne.",
@@ -144,7 +169,11 @@
   {
     "id": "seitwaerts-gehen",
     "name": "Seitwärts Gehen",
-    "targetMuscles": ["Gluteus Medius", "Hüftabduktoren", "Hüftadduktoren"],
+    "targetMuscles": [
+      "Gluteus Medius",
+      "Hüftabduktoren",
+      "Hüftadduktoren"
+    ],
     "instructions": [
       "Starten Sie in einem hüftbreiten Stand. Die Fußspitzen zeigen gerade aus und die Arme sind zur Seite ausgestreckt. Die Knie sind dabei leicht gebeugt.",
       "Machen Sie in eine Richtung gleichmäßige, große Seitwärtsschritte.",
@@ -157,12 +186,17 @@
       "Knie leicht gebeugt halten",
       "Gleichmäßige, kontrollierte Schritte"
     ],
+    "reps": "4",
     "youtubeId": "jy55DMhen_k"
   },
   {
     "id": "herabsteigen",
     "name": "Herabsteigen",
-    "targetMuscles": ["Quadrizeps", "Gluteus Medius", "Hüftstabilisatoren"],
+    "targetMuscles": [
+      "Quadrizeps",
+      "Gluteus Medius",
+      "Hüftstabilisatoren"
+    ],
     "instructions": [
       "Starten Sie seitlich auf einer Treppenstufe oder einem Stepper stehend. Halten Sie sich gegebenenfalls an einem Treppengeländer fest oder stützen Sie die Hände seitlich am Rumpf ab.",
       "Halten Sie den Oberkörper aufrecht und lassen Sie ein Bein seitlich der Stufe absinken, bis die Ferse den Boden berührt, indem Sie das andere Bein im Hüft- und Kniegelenk beugen.",
@@ -175,12 +209,17 @@
       "Oberkörper aufrecht halten",
       "Langsam und kontrolliert absenken"
     ],
+    "reps": "12",
     "youtubeId": "__zvHYMJYvk"
   },
   {
     "id": "einbeinige-kniebeuge",
     "name": "Einbeinige Kniebeuge",
-    "targetMuscles": ["Quadrizeps", "Gluteus Maximus", "Hüftstabilisatoren"],
+    "targetMuscles": [
+      "Quadrizeps",
+      "Gluteus Maximus",
+      "Hüftstabilisatoren"
+    ],
     "instructions": [
       "Starten Sie auf einem Bein stehend und beugen Sie das andere Bein 90° im Knie an. Halten Sie sich gegebenenfalls an einer Stuhllehne fest oder lassen Sie die Arme locker hängen.",
       "Beugen Sie das Standbein zwischen 45 und 60° an.",
@@ -193,12 +232,17 @@
       "Knie in der Beinachse – nicht nach innen einbrechen",
       "Kontrolliert absenken und aufstehen"
     ],
+    "reps": "12",
     "youtubeId": "ofKEb-bQUHk"
   },
   {
     "id": "dehnung-hueftflexoren",
     "name": "Dehnung der Hüftflexoren",
-    "targetMuscles": ["Hüftflexoren", "Iliopsoas", "Rectus Femoris"],
+    "targetMuscles": [
+      "Hüftflexoren",
+      "Iliopsoas",
+      "Rectus Femoris"
+    ],
     "instructions": [
       "Starten Sie mit aufrechtem Oberkörper auf dem Boden kniend und stützen Sie die Hände seitlich am Rumpf ab.",
       "Stellen Sie ein Bein nach vorne auf.",
@@ -223,7 +267,11 @@
   {
     "id": "hueftstreckung",
     "name": "Hüftstreckung",
-    "targetMuscles": ["Gluteus Maximus", "Ischiokrurale Muskulatur", "Rumpfstabilisatoren"],
+    "targetMuscles": [
+      "Gluteus Maximus",
+      "Ischiokrurale Muskulatur",
+      "Rumpfstabilisatoren"
+    ],
     "instructions": [
       "Starten Sie im Vierfüßlerstand: Hände unter den Schultern, Knie unter der Hüfte.",
       "Spannen Sie die Rumpfmuskulatur an, halten Sie den Rücken gerade und richten Sie den Blick zum Boden.",
@@ -248,7 +296,11 @@
   {
     "id": "bruecke-bridging",
     "name": "Brücke (Bridging)",
-    "targetMuscles": ["Gluteus Maximus", "Ischiokrurale Muskulatur", "Rumpfmuskulatur"],
+    "targetMuscles": [
+      "Gluteus Maximus",
+      "Ischiokrurale Muskulatur",
+      "Rumpfmuskulatur"
+    ],
     "instructions": [
       "Starten Sie in Rückenlage und stellen Sie beide Knie hüftbreit auf. Die Arme liegen dabei locker neben dem Oberkörper.",
       "Heben Sie das Becken so hoch wie möglich vom Boden ab und halten Sie dabei die Rumpf- und Gesäßmuskulatur angespannt.",
