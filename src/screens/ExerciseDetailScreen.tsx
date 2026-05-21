@@ -60,7 +60,7 @@ export default function ExerciseDetailScreen({ navigation, route }: Props) {
 
       {/* Fixed bottom bar */}
       <View style={[styles.actionBar, { paddingBottom: insets.bottom + 12 }]}>
-        {timerVisible ? (
+        {exercise.timer && (timerVisible ? (
           <View style={styles.timerInline}>
             <Timer config={exercise.timer} autoStart onReset={() => setTimerVisible(false)} />
           </View>
@@ -68,7 +68,7 @@ export default function ExerciseDetailScreen({ navigation, route }: Props) {
           <TouchableOpacity style={styles.timerButton} onPress={() => setTimerVisible(true)}>
             <Text style={styles.timerButtonText}>⏱ Timer</Text>
           </TouchableOpacity>
-        )}
+        ))}
         <View style={styles.navButtons}>
           <TouchableOpacity
             style={[styles.prevButton, isFirst && styles.disabledButton]}

@@ -18,6 +18,6 @@ export type Exercise = {
   targetMuscles: string[];
   instructions: string[];
   cues: string[];
-  timer: TimerConfig;
+  timer?: TimerConfig;
   youtubeId?: string;
 };

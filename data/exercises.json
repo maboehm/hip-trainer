@@ -66,10 +66,6 @@
       "Kontrollierte Bewegung beim Ausstrecken und Zurückführen",
       "Standbein leicht gebeugt"
     ],
-    "timer": {
-      "mode": "simple",
-      "durationSeconds": 45
-    },
     "youtubeId": "Z01xasXBQrw"
   },
   {
@@ -161,10 +157,6 @@
       "Knie leicht gebeugt halten",
       "Gleichmäßige, kontrollierte Schritte"
     ],
-    "timer": {
-      "mode": "simple",
-      "durationSeconds": 60
-    },
     "youtubeId": "jy55DMhen_k"
   },
   {
@@ -183,10 +175,6 @@
       "Oberkörper aufrecht halten",
       "Langsam und kontrolliert absenken"
     ],
-    "timer": {
-      "mode": "simple",
-      "durationSeconds": 45
-    },
     "youtubeId": "__zvHYMJYvk"
   },
   {
@@ -205,10 +193,6 @@
       "Knie in der Beinachse – nicht nach innen einbrechen",
       "Kontrolliert absenken und aufstehen"
     ],
-    "timer": {
-      "mode": "simple",
-      "durationSeconds": 45
-    },
     "youtubeId": "ofKEb-bQUHk"
   },
   {
