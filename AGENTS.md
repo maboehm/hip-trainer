@@ -36,3 +36,12 @@ No lint, test, or format scripts are configured. Do not assume they exist.
 - `expo-keep-awake` is intentional — screen stays on during exercise sessions.
 - Portrait-only, light mode only (`userInterfaceStyle: "light"`).
 - No CI, no `.env` files, no test infrastructure.
+
+## Workflow
+
+This project uses **spec-driven design** via the OpenSpec workflow:
+
+- Specs live in `.opencode/` (changes, proposals, tasks).
+- Before implementing anything, check for an existing spec/change document.
+- Use the available skills: `openspec-propose`, `openspec-explore`, `openspec-apply-change`, `openspec-archive-change`.
+- Do not implement features ad-hoc — propose first, then apply.
