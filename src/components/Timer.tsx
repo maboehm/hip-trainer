@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { TimerConfig } from '../types';
 import { useTimer } from '../hooks/useTimer';
-import ProgressBar from './ProgressBar';
 
 interface Props {
   config: TimerConfig;
@@ -22,16 +21,9 @@ function phaseColor(phase: string): string {
   return '#aaa';
 }
 
-function phaseTotal(config: TimerConfig, phase: string): number {
-  if (config.mode === 'simple') return config.durationSeconds;
-  if (phase === 'hold') return config.holdSeconds;
-  if (phase === 'rest') return config.restSeconds;
-  return 1;
-}
-
 export default function Timer({ config, autoStart, onReset }: Props) {
   const [state, controls] = useTimer(config);
-  const { phase, remaining, currentSet, totalSets, isRunning, snapBar } = state;
+  const { phase, remaining, currentSet, totalSets, isRunning } = state;
 
   useEffect(() => {
     if (autoStart) {
@@ -45,14 +37,6 @@ export default function Timer({ config, autoStart, onReset }: Props) {
     onReset?.();
   };
 
-  const total = phaseTotal(config, phase);
-  const countdownTotal = 3;
-  const progress =
-    phase === 'idle'
-      ? 0
-      : phase === 'countdown'
-      ? (countdownTotal - remaining) / countdownTotal
-      : (total - remaining) / total;
   const color = phaseColor(phase);
 
   if (phase === 'done') {
@@ -71,9 +55,6 @@ export default function Timer({ config, autoStart, onReset }: Props) {
       <View style={styles.container}>
         <Text style={styles.countdownLabel}>GET READY</Text>
         <Text style={[styles.countdown, { color: '#aaa' }]}>{remaining}</Text>
-        <View style={styles.progressContainer}>
-          <ProgressBar progress={progress} color="#aaa" snap={snapBar} />
-        </View>
         <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={handleReset}>
           <Text style={[styles.buttonText, { color: '#555' }]}>Cancel</Text>
         </TouchableOpacity>
@@ -97,10 +78,6 @@ export default function Timer({ config, autoStart, onReset }: Props) {
       )}
 
       <Text style={[styles.countdown, { color }]}>{formatSeconds(remaining)}</Text>
-
-      <View style={styles.progressContainer}>
-        <ProgressBar progress={progress} color={color} snap={snapBar} />
-      </View>
 
       {config.mode === 'interval' && (
         <View style={styles.pipsRow}>
@@ -174,10 +151,6 @@ const styles = StyleSheet.create({
     fontSize: 72,
     fontWeight: '200',
     letterSpacing: -2,
-  },
-  progressContainer: {
-    width: '100%',
-    paddingHorizontal: 4,
   },
   pipsRow: {
     flexDirection: 'row',
